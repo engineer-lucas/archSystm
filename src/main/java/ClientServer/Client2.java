@@ -13,8 +13,8 @@ public class Client2 {
             System.out.println("Conectado ao servidor.");
 
             // Enviando mensagem para o servidor
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("Sou o segundo cliente servidor!");
+            PrintWriter escritor = new PrintWriter(socket.getOutputStream(), true);
+            escritor.println("Sou o segundo cliente servidor!");
 
             // Lendo a resposta do servidor
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -23,7 +23,7 @@ public class Client2 {
 
             // Fechando os recursos
             in.close();
-            out.close();
+            escritor.close();
             socket.close();
         } catch (Exception e) {
             e.printStackTrace();
