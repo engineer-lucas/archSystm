@@ -37,7 +37,13 @@ public class Server {
                 // para caracteres (InputStreamReader) de um fluxo de bytes (InputStream) que vem-
                 // diretamente do socket do cliente."
                 BufferedReader leitorDeEntrada = new BufferedReader(new InputStreamReader(socketDoCliente.getInputStream()));
-    
+
+        //leitorDeEntrada: É o objeto BufferedReader que está conectado ao fluxo de entrada do socket, ou seja, está 
+        //"ouvindo" os dados que vêm do cliente.
+        //.readLine(): Este é o método que faz a leitura. Ele lê os caracteres do fluxo de entrada até encontrar uma 
+        //quebra de linha (\n ou \r\n). O método então retorna todos os caracteres lidos, mas sem a quebra de linha.
+        //String inputLine = ...: A mensagem lida pelo 
+        //.readLine() é armazenada na variável inputLine, que é do tipo String.
                 String inputLine = leitorDeEntrada.readLine();
                 System.out.println("Mensagem do cliente: " + inputLine);
     
