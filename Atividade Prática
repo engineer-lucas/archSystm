@@ -1,0 +1,35 @@
+Atividade Prática: Expandindo o Servidor
+O seu projeto atual demonstra um modelo de comunicação simples, mas limitado a uma única conexão. Para testar e aprofundar o seu entendimento, a tarefa é modificar o código do Server.java para que ele possa lidar com múltiplos clientes.
+
+Objetivo
+Modifique a classe Server para que ela não se encerre após a primeira conexão. O novo objetivo é que o servidor continue executando e aceitando novas conexões de clientes.
+
+Instruções
+Abra o arquivo Server.java.
+
+Identifique a linha de código Socket socketDoCliente = socketDoServidor.accept();.
+
+No código atual, essa linha está fora de um loop, o que faz com que o programa termine após a primeira conexão.
+
+Adicione um loop while (true) ao redor das partes do código que lidam com a conexão e a comunicação.
+
+Este loop fará com que o servidor continue a "escutar" e aceitar novas conexões infinitamente.
+
+Você deve colocar a chamada para socketDoServidor.accept() dentro do loop.
+
+Adapte o fluxo do código para que cada nova conexão de cliente seja tratada dentro de cada iteração do loop.
+
+Compile e execute o novo código do servidor.
+
+Teste a sua implementação:
+
+Inicie o Server.java em um terminal.
+
+Em um segundo terminal, inicie o Client.java. Observe a saída.
+
+Em um terceiro terminal, inicie o Client2.java sem fechar o servidor.
+
+Verifique se o servidor consegue receber e responder a mensagens de ambos os clientes sem a necessidade de ser reiniciado.
+
+Dica
+O desafio é garantir que o servidor volte a executar socketDoServidor.accept() após lidar com um cliente. O loop while é a ferramenta perfeita para isso.
