@@ -26,6 +26,7 @@ public class Server {
                 // conecte. Quando a conexão acontece, ele retorna um objeto 'Socket'
                 // que representa a comunicação com aquele cliente específico.
                 //getInetAddress() é um método do Java que retorna o endereço IP da máquina à qual o socket está conectado.
+                //O método .getHostAddress() é usado para extrair o endereço IP de um objeto InetAddress e convertê-lo em uma string de texto legível por humanos.
                 Socket socketDoCliente = socketDoServidor.accept();
                 System.out.println("Cliente conectado: " + socketDoCliente.getInetAddress().getHostAddress());
     
