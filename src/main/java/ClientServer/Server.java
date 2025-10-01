@@ -32,6 +32,7 @@ public class Server {
     
                 // 'BufferedReader' é usado para ler dados que vêm do cliente.
                 // 'InputStreamReader' converte os bytes recebidos em caracteres.
+                //InputStreamReader é classe: ponte entre fluxos de bytes e fluxos de caracteres.
                 //"Crie um leitor de texto eficiente (BufferedReader) que vai ler dados traduzidos-
                 // para caracteres (InputStreamReader) de um fluxo de bytes (InputStream) que vem-
                 // diretamente do socket do cliente."
