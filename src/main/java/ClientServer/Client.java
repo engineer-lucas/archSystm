@@ -11,6 +11,11 @@ public class Client {
         // Estrutura try-catch
         // 'try-with-resources' garante que o 'socket' e os 'streams'
         // serão fechados automaticamente, mesmo que ocorra um erro.
+        
+        // inicia a conexão com o servidor.
+        //Socket: Uma classe em Java que representa um endpoint de comunicação, ou seja, um ponto final de uma conexão de rede. 
+        //No contexto de uma aplicação cliente-servidor, o cliente precisa criar um objeto Socket para se conectar ao servidor.
+        //new Socket(...): Este é o construtor da classe Socket
         try (Socket socketDoCliente = new Socket("localhost", 12345)) {
 
             System.out.println("Conectado ao servidor.");
