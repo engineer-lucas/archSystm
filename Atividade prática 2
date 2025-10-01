@@ -1,0 +1,36 @@
+Atividade Prática 2: Servidor Inteligente e Cliente Interativo
+A sua primeira atividade focou em permitir que o servidor aceitasse múltiplos clientes. Agora, a tarefa é fazer com que o servidor se torne mais dinâmico e que o cliente possa enviar dados de forma contínua em vez de apenas uma mensagem.
+
+Objetivos
+Modificar o Server.java: O servidor deve ser capaz de receber uma mensagem do cliente, transformá-la (por exemplo, em maiúsculas) e enviar a versão modificada de volta.
+
+Modificar o Client.java: O cliente não deve enviar apenas uma mensagem predefinida. Ele deve ler o que o usuário digitar no teclado e enviar essa entrada para o servidor. O cliente também deve continuar lendo e enviando mensagens até que o usuário digite a palavra "sair".
+
+Instruções
+No Server.java
+Dentro do loop while (true) que você criou na atividade anterior, modifique a lógica.
+
+Em vez de apenas ler a mensagem e enviar uma resposta fixa, leia a mensagem do cliente (na variável inputLine).
+
+Transforme essa mensagem (por exemplo, usando inputLine.toUpperCase()).
+
+Envie a mensagem transformada de volta ao cliente.
+
+No Client.java
+Substitua a mensagem fixa "Olá, Servidor! Aqui é o cliente 1" por um mecanismo de leitura do teclado. Você precisará de uma nova classe BufferedReader para ler a entrada do teclado.
+
+Crie um loop (while) que continue a execução enquanto o que o usuário digita não for a palavra "sair".
+
+Dentro deste loop, leia a linha do teclado, envie-a para o servidor e espere pela resposta.
+
+Quando a resposta do servidor chegar, imprima-a no console.
+
+O loop deve ser interrompido quando o usuário digitar "sair".
+
+Dica
+Para ler a entrada do teclado, você pode usar uma estrutura semelhante à que você já usou para ler do socket:
+
+Java
+
+BufferedReader leitorDoTeclado = new BufferedReader(new InputStreamReader(System.in));
+String mensagemDoUsuario = leitorDoTeclado.readLine();
