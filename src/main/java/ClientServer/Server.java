@@ -25,6 +25,7 @@ public class Server {
                 // O método 'accept()' bloqueia a execução do programa e o faz esperar até que um cliente se
                 // conecte. Quando a conexão acontece, ele retorna um objeto 'Socket'
                 // que representa a comunicação com aquele cliente específico.
+                //getInetAddress() é um método do Java que retorna o endereço IP da máquina à qual o socket está conectado.
                 Socket socketDoCliente = socketDoServidor.accept();
                 System.out.println("Cliente conectado: " + socketDoCliente.getInetAddress().getHostAddress());
     
