@@ -18,7 +18,7 @@ public class Client {
             // 'PrintWriter' é usado para enviar dados ao servidor.
             PrintWriter escritor = new PrintWriter(socketDoCliente.getOutputStream(), true);
 
-            escritor.println("Olá, Servidor!");
+            escritor.println("Olá, Servidor! Aqui é o cliente 1");
 
             // 'BufferedReader' é usado para ler a resposta que vem do servidor.
             BufferedReader leitorDeEntrada = new BufferedReader(new InputStreamReader(socketDoCliente.getInputStream()));
