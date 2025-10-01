@@ -1,0 +1,98 @@
+Solução da Atividade 2
+O código foi ajustado para permitir a interação contínua entre o cliente e o servidor.
+
+Server.java
+O servidor agora lê a mensagem do cliente, a transforma para letras maiúsculas e a envia de volta. O loop while(true) garante que ele sempre estará pronto para receber novas mensagens de qualquer cliente.
+
+"
+package ClientServer;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+    public static void main(String[] args) {
+        try (ServerSocket socketDoServidor = new ServerSocket(12345)) {
+            System.out.println("Servidor iniciado e aguardando conexões na porta 12345...");
+
+            while (true) {
+                Socket socketDoCliente = socketDoServidor.accept();
+                System.out.println("Cliente conectado: " + socketDoCliente.getInetAddress().getHostAddress());
+
+                // Utilizando um 'try-with-resources' para os streams do cliente
+                try (BufferedReader leitorDeEntrada = new BufferedReader(new InputStreamReader(socketDoCliente.getInputStream()));
+                     PrintWriter escritor = new PrintWriter(socketDoCliente.getOutputStream(), true)) {
+
+                    String inputLine;
+                    while ((inputLine = leitorDeEntrada.readLine()) != null) {
+                        System.out.println("Mensagem do cliente: " + inputLine);
+                        escritor.println(inputLine.toUpperCase());
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Erro na comunicação com o cliente: " + e.getMessage());
+                } finally {
+                    socketDoCliente.close();
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro: " + e.getMessage());
+        }
+    }
+}
+"
+
+Client.java
+O cliente foi modificado para ler o que o usuário digita no console, enviar para o servidor e exibir a resposta. O loop de leitura continua até que o usuário digite a palavra "sair".
+
+"
+package ClientServer;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class Client {
+    public static void main(String[] args) {
+        try (Socket socketDoCliente = new Socket("localhost", 12345)) {
+            System.out.println("Conectado ao servidor. Digite 'sair' para encerrar a conexão.");
+
+            // Leitor para a entrada do teclado do usuário
+            BufferedReader leitorDeTeclado = new BufferedReader(new InputStreamReader(System.in));
+            // Escritor para enviar dados ao servidor
+            PrintWriter escritor = new PrintWriter(socketDoCliente.getOutputStream(), true);
+            // Leitor para a resposta que vem do servidor
+            BufferedReader leitorDeEntrada = new BufferedReader(new InputStreamReader(socketDoCliente.getInputStream()));
+
+            String mensagemUsuario;
+            String respostaDoServidor;
+
+            // Loop para permitir a comunicação contínua
+            while (true) {
+                System.out.print("Digite uma mensagem: ");
+                mensagemUsuario = leitorDeTeclado.readLine();
+
+                if (mensagemUsuario.equalsIgnoreCase("sair")) {
+                    break;
+                }
+
+                escritor.println(mensagemUsuario);
+
+                respostaDoServidor = leitorDeEntrada.readLine();
+                System.out.println("Resposta do servidor: " + respostaDoServidor);
+            }
+
+            System.out.println("Conexão encerrada pelo cliente.");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro: " + e.getMessage());
+        }
+    }
+}
+"
+
+Agora você pode compilar e testar os dois códigos. Execute o Server.java primeiro e depois o Client.java. O cliente irá pedir que você digite mensagens, e o servidor irá respondê-las em maiúsculas até que você digite "sair".
